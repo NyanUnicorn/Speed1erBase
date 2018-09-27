@@ -5,6 +5,10 @@ public enum Symbole {
 
 	public static final Symbole[] tableau = Symbole.values();
 	public static final int NBR_SYMBOLE = tableau.length;
+	
+	public static Symbole get(int i) {
+		return tableau[i-1];
+	}
 
 	@Override
 	public String toString() {

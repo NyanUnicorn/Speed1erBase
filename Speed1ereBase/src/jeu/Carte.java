@@ -4,7 +4,7 @@ import java.awt.Color;
 
 public class Carte {
 	
-	private static Color[] colorList = {Color.darkGray, Color.blue, Color.orange, Color.cyan, Color.black, Color.lightGray};
+	private static Color[] colorList = {Color.darkGray, Color.blue, Color.orange, Color.cyan, Color.black, Color.lightGray};	
 	private static int[] valueList = {1, 2, 3, 4, 5};
 	
 	public static final int NBR_COULEURS = colorList.length;
@@ -44,6 +44,11 @@ public class Carte {
 	public String toString() {		
 		return !isDead? "[valeur=" + valeur + ";motif=" + motif.toString() + ";couleur=" + couleur.toString() + "]" : "[valeur=-1;motif=null;couleur=" + couleur.toString() + "]";
 	}
+	
+	public static Color[] getColorList() {
+		return colorList;
+	}
+
 	
 	
 	
