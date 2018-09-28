@@ -46,6 +46,10 @@ public class Joueur {
 		}
 	}
 	
+	/**
+	 * annule les pénalités de l'adversaire et ajour au joueur
+	 * @param mechant
+	 */
 	public void gererErreur(Joueur mechant) {
 		mechant.annulerPenalite();
 		this.ajouterPenalite();
