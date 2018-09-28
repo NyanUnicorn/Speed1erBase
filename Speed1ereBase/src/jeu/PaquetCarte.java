@@ -56,7 +56,7 @@ public class PaquetCarte {
 				valeur = 1;
 				while(i < size && valeur < Carte.NBR_VALEURS) {
 					motif = 0;
-					while(i < size && motif < Carte.NBR_MOTIFS) {
+					while(i < size && motif < Carte.NBR_MOTIFS-1) {
 						this.listCarte.add(new Carte(couleur, Symbole.TAB_SYMBOLE[motif] , valeur));
 						i++;
 						motif ++;

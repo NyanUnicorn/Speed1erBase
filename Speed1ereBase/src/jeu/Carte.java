@@ -8,7 +8,7 @@ public class Carte {
 	private static int[] valueList = {1, 2, 3, 4, 5};
 	
 	public static final int NBR_COULEURS = colorList.length;
-	public static final int NBR_MOTIFS = Symbole.NBR_SYMBOLE;
+	public static final int NBR_MOTIFS = 5;
 	public static final int NBR_VALEURS = valueList.length;
 	
 	
@@ -17,13 +17,16 @@ public class Carte {
 	private Symbole motif;
 	private int valeur;
 	
-	public boolean vide;
-	
 	
 
 	public Carte() {
+		forcerVide();
+	}
+
+	private void forcerVide() {
 		this.couleur = Color.darkGray;
-		this.vide = true;
+		this.valeur = -1;
+		this.motif = Symbole.VIDE;
 	}
 
 	public Carte(int couleur, Symbole motif, int valeur) {
@@ -32,18 +35,17 @@ public class Carte {
 			this.couleur = colorList[couleur];
 			this.motif = motif;
 			this.valeur = valueList[valeur-1];
-			this.vide = false;
+			
 		}
 		else {
 			System.out.println("Paramètre d'Objet Carte invalide");
-			this.couleur = Color.darkGray;
-			this.vide = true;
+			forcerVide();
 		}
 	}
 
 	@Override
 	public String toString() {		
-		return !vide? "[valeur=" + valeur + ";motif=" + motif.toString() + ";couleur=" + couleur.toString() + "]" : "[valeur=-1;motif=null;couleur=" + couleur.toString() + "]";
+		return !isVide()? "[valeur=" + valeur + ";motif=" + motif.toString() + ";couleur=" + couleur.toString() + "]" : "[valeur=-1;motif=null;couleur=" + couleur.toString() + "]";
 	}
 	
 	public static Color[] getColorList() {
@@ -52,7 +54,7 @@ public class Carte {
 	
 	public boolean estCompatible(Carte c) {
 		boolean compatible = false;
-		if(!c.vide || !this.vide) {
+		if(!c.isVide() || !this.isVide()) {
 			if(c.valeur == this.valeur || c.motif == this.motif || c.couleur == this.couleur) {
 				compatible = true;
 			}
@@ -61,7 +63,7 @@ public class Carte {
 	}
 	
 	public boolean isVide() {
-		return this.vide;
+		return motif == Symbole.VIDE;
 	}
 	
 	
