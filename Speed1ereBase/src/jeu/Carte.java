@@ -16,13 +16,14 @@ public class Carte {
 	private Color couleur;
 	private Symbole motif;
 	private int valeur;
-	private boolean isDead;
+	
+	public boolean vide;
 	
 	
 
 	public Carte() {
 		this.couleur = Color.darkGray;
-		this.isDead = true;
+		this.vide = true;
 	}
 
 	public Carte(int couleur, Symbole motif, int valeur) {
@@ -31,22 +32,60 @@ public class Carte {
 			this.couleur = colorList[couleur];
 			this.motif = motif;
 			this.valeur = valueList[valeur-1];
-			this.isDead = false;
+			this.vide = false;
 		}
 		else {
 			System.out.println("Paramètre d'Objet Carte invalide");
 			this.couleur = Color.darkGray;
-			this.isDead = true;
+			this.vide = true;
 		}
 	}
 
 	@Override
 	public String toString() {		
-		return !isDead? "[valeur=" + valeur + ";motif=" + motif.toString() + ";couleur=" + couleur.toString() + "]" : "[valeur=-1;motif=null;couleur=" + couleur.toString() + "]";
+		return !vide? "[valeur=" + valeur + ";motif=" + motif.toString() + ";couleur=" + couleur.toString() + "]" : "[valeur=-1;motif=null;couleur=" + couleur.toString() + "]";
 	}
 	
 	public static Color[] getColorList() {
 		return colorList;
+	}
+	
+	public boolean estCompatible(Carte c) {
+		boolean compatible = false;
+		if(!c.vide || !this.vide) {
+			if(c.valeur == this.valeur || c.motif == this.motif || c.couleur == this.couleur) {
+				compatible = true;
+			}
+		}
+		return true;
+	}
+	
+	public boolean isVide() {
+		return this.vide;
+	}
+	
+	
+
+	public Color getCouleur() {
+		return couleur;
+	}
+	
+	public int getCouleurIndex() {
+		int index = 0;
+		for(int i = 0; i <= colorList.length; i++) {
+			if(colorList[i] == couleur) {
+				index = i+1;
+			}
+		}
+		return index;
+	}
+
+	public Symbole getMotif() {
+		return motif;
+	}
+	
+	public int getValeur() {
+		return valeur;
 	}
 
 	

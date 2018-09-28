@@ -3,11 +3,11 @@ package jeu;
 public enum Symbole {
 	BALLON, FANION, ETOILE, MAISON, ARBRE;
 
-	public static final Symbole[] tableau = Symbole.values();
-	public static final int NBR_SYMBOLE = tableau.length;
-	
+	public static final Symbole[] TAB_SYMBOLE = Symbole.values();
+	public static final int NBR_SYMBOLE = TAB_SYMBOLE.length;
+
 	public static Symbole get(int i) {
-		return tableau[i-1];
+		return TAB_SYMBOLE[i-1];
 	}
 
 	@Override
@@ -30,7 +30,7 @@ public enum Symbole {
 			value = "arbres";
 			break;
 		default:
-			value = "null";	
+			value = "";	
 		
 		}
 		return value;

@@ -6,6 +6,9 @@ import java.awt.event.KeyListener;
 
 import ihm.FenetreHote;
 import ihm.Touches;
+import jeu.Carte;
+import jeu.Joueur;
+import jeu.PaquetCarte;
 
 
 
